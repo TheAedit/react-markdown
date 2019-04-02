@@ -83,7 +83,7 @@ function parseHtml(config, tree, props) {
   // Find any leftover HTML elements and blindly replace them with a parsed version
   visit(tree, 'html', (node, index, parent) => {
     const element = parser.parseWithInstructions(
-      node.value.trim(),
+      node.value,
       config.isValidNode,
       config.processingInstructions
     )
@@ -124,7 +124,7 @@ function parseNode(node, config) {
   }
 
   const el = parser.parseWithInstructions(
-    node.value,
+    node.value.trim(),
     config.isValidNode,
     config.processingInstructions
   )
